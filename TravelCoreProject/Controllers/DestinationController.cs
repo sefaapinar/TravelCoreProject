@@ -22,7 +22,8 @@ namespace TravelCoreProject.Controllers
 
         public IActionResult DestinationDetails(int id)
         {
-            return View();
+            var values = destinationManager.TGetByID(id);
+            return View(values);
         }
         [HttpPost]
         public IActionResult DestinationDetails(Destination p)
