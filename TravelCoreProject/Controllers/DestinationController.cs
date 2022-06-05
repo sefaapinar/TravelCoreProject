@@ -22,6 +22,7 @@ namespace TravelCoreProject.Controllers
 
         public IActionResult DestinationDetails(int id)
         {
+            ViewBag.i = id;
             var values = destinationManager.TGetByID(id);
             return View(values);
         }

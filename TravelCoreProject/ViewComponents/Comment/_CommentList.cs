@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Business.Concrete;
+using DataAccess.EntityFramework;
 using Microsoft.AspNetCore.Mvc;
 
 namespace TravelCoreProject.ViewComponents.Comment
 {
     public class _CommentList:ViewComponent
-    
     {
-        public IViewComponentResult Invoke()
+        private CommentManager commentManager = new CommentManager(new EfCommentDal());
+        public IViewComponentResult Invoke(int id)
         {
-            return View();
+            var values = commentManager.TGetDestinationById(id);
+            return View(values);
         }
     }
 }
